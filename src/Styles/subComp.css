@@ -1,0 +1,124 @@
+
+
+.home-screen-button {
+    height: 150px;
+    border-bottom-right-radius: 50px;
+    /* background-color: #EBEBFF; */
+    background-color: #713BDB;
+    font-size: 3vmax;
+    color: white;
+}
+.home-screen-button p {
+    background-image:  linear-gradient(to right, #F7B801, #F18701 );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.home-screen-button *:nth-child(1){ /** icon */
+    font-size: 4vmax;
+}
+.input-1 {
+    width: 95%;
+    min-height: 3em;
+    border-bottom: 1px solid #713BDB;
+    outline: transparent;
+}
+
+.icon-btn-small {
+    width: 40px;
+    height: 40px;
+    color: #0052B1;
+    font-size: 1.2rem;
+    background-color: inherit;
+    border: 1px solid #0053b149;
+    border-radius: 10px;
+}
+
+.button-1 {
+    min-width: 150px;
+    height: 3em;
+    background: linear-gradient(45deg, #0052B1, #BC2BF7);
+    color: white;
+    width: 90%;
+    transition: 0.3s linear;
+}
+.button-1:active {
+    transform: scale(0.9);
+    color: black;
+    background-color: linear-gradient(45deg, transparent, transparent);
+    
+}
+
+.top-curvy-bar {
+    width: 80%;
+    position: absolute;
+    background-color: #713BDB;
+    height: calc((322/812) * 100vh);
+    border-bottom-right-radius: 100px;
+    top: 0;
+}
+
+.styled-name {
+    /* font-size: 4vmax; */
+    height: 15vh;
+    width: max-content;
+    text-align: left;
+}
+.styled-name h1 {
+    width: max-content;
+    height: max-content;
+    /* line-height: 4.5vmax; */
+    font-size: clamp(8vh, 8rem, 8vw);
+    /* text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.304); */
+    line-height: clamp(8vh, 8rem, 8vw);
+    color: white;
+}
+
+.spinner-div {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.674);
+    z-index: 200;
+    top: 0;
+    display: flex;
+}
+.spinner-div .spinner {
+    width: 5vh;
+    height: 5vh;
+    margin: auto;
+    border-right: 5px solid #F7B801;
+    border-bottom-right-radius: 25px;
+    border-left: 5px solid #713BDB;
+    border-top-left-radius: 25px;
+    animation-name: spin;
+    animation-duration: 0.5s;
+    animation-direction: normal;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+}
+
+.checklist-item {
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 5% 45% 20% 20% 10% !important;
+}
+.checklist-item input {
+    text-align: center;
+}
+@keyframes spin {
+    0%{
+        transform: rotateZ(0deg); 
+        border-right: 5px solid #713BDB;
+    }
+    50%{
+        border-right: 5px solid #F7B801;
+    }
+    to{
+        transform: rotateZ(360deg);
+        border-right: 5px solid #713BDB;
+
+    }
+}

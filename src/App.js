@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home';
+import Aos from 'aos';
+import 'aos/dist/aos.css'
+import WritePage from './Pages/WritePage';
+import AllListsPage from './Pages/AllListsPage'
+import ShopPage from './Pages/ShopPage';
+import ProfilePage from './Pages/ProfilePage';
+import AuthPage from './Pages/AuthPage';
 
 function App() {
+
+  useEffect(()=>{
+    Aos.init();
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path='/write' element={<WritePage />} />
+        <Route path='/lists' element={<AllListsPage /> } />
+        <Route path='/shop' element={<ShopPage />} />
+        <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/auth' element={<AuthPage />} />
+      </Routes>
     </div>
   );
 }

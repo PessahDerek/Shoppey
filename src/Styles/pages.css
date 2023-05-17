@@ -1,0 +1,200 @@
+
+#profile-page .container {
+    background-color: white;
+}
+#profile-page .profile-form {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 0.5rem;
+    text-align: left;
+}
+#profile-page input {
+    width: 90%;
+}
+
+#shop-page .container {
+    background-color: white;
+}
+#shop-page .container .details {
+    width: 95%;
+    display: grid;
+    margin: auto;
+    grid-auto-flow: row;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.235);
+    padding-bottom: 2%;
+}
+#shop-page .container .details span {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#shop-page .container .details span label {
+    flex: 0 1 30%;
+    height: 3em;
+    line-height: 3em;
+    text-align: left;
+}
+#shop-page .container .details span input {
+    flex: 0 1 70%;
+}
+
+#auth-page .title {
+    width: 100%;
+    display: grid;
+    grid-auto-flow: row;
+    min-height: 40vh;
+    grid-template-rows: 50% 50%;
+    text-indent: 10%;
+    overflow: hidden;
+}
+#auth-page .title span {
+    width: 70%;
+    display: grid;
+    height: 100%;
+    grid-auto-flow: column;
+}
+#auth-page .title span img {
+    width: 100%;
+    height: 90%;
+    object-fit: contain;
+    padding-left: 5%;
+    -webkit-filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.525));
+    filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.525));
+}
+#auth-page .title span #cart-img {
+    display: inline;
+    transform: scale(1.5) rotate(-30deg) perspective(1000px);
+    top: 30%;
+    left: 40%;
+    z-index: 5;
+    animation: float infinite 1s linear both alternate ;
+}
+
+@keyframes float {
+    from{ top: 30%; left: 40%;}
+    to{top: 35%; left: 40%;}
+}
+
+#auth-page .title .styled-name {
+    /* width: 50%; */
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-auto-flow: row;
+}
+#auth-page .title .styled-name h1 {
+    font-size: clamp(10vh, 8rem, 8vw);
+}
+
+
+#write-page .container{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+}
+
+#write-page .list-details{
+    width: 95%;
+    padding: 2%;
+    max-width: 500px;
+    margin: auto;
+    display: grid;
+    text-align: left;
+    grid-auto-flow: row;
+    gap: 0.5rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.329);
+}
+#write-page .list-details h3 {
+    /* separates the page */
+    height: 2em;
+    font-weight: lighter;
+    width: 70%;
+    background-color: #713BDB;
+    /* background-color: #faf7ff; */
+    border-bottom: 1px solid #713BDB;
+    border-bottom-right-radius: 25px;
+    border-right: 1px solid #713BDB;
+    line-height: 2em;
+    color: white;
+}
+#write-page .list-details span {
+    width: 100%;
+    display: flex;
+    min-height: 3em;
+    gap: 0.2rem;
+}
+#write-page .list-details .btns {
+    flex-wrap: wrap;
+
+}
+#write-page .list-details .btns .button-1 {
+    width: unset !important;
+    flex: 1 0;
+}
+#write-page .list-details span label {
+    flex-basis: 30%;
+    text-align: left;
+    height: 100%;
+    line-height: 3em;
+}
+#write-page textarea {
+    width: 100%;
+    height: 10vh;
+    font-family: inherit;
+    transition: all 0.3s linear;
+    outline: transparent;
+    resize: none;
+    border-left: 1px solid #713BDB;
+}
+#write-page textarea:focus {
+    height: 20vh;
+}
+
+#all-lists-page .container {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1%;
+    background-color: white;
+    grid-auto-rows: max-content;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+@media screen and (max-width: 768px) {
+    #all-lists-page .container {
+        /* grid-auto-flow: row !important;
+        grid-template-columns: none !important;
+        grid-auto-rows: max-content; */
+
+    }
+}
+
+#home .title {
+    width: 70%;
+    height: 45vh;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 50% 60%;
+    /* flex-direction: row; */
+    /* padding-top: 15%; */
+}
+#home .title img {
+    /* width: 150%; */
+    width: clamp(150%, 100%, 400%);
+    height:40vh;
+    display: inline-block;
+    z-index: 5;
+    object-fit: contain;
+}
+#home .styled-name {
+    /* margin-left: -5%; */
+    margin-top: clamp(10vh, 5vh, 5vh);
+    margin-bottom: auto;
+}
+
+#home .btn-menu {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    gap: 5%;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
