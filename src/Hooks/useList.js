@@ -113,7 +113,6 @@ const useList = () => {
                 let test = ''
                 for(let x of clean){
                     console.log("x is: ", x)
-                    test 
                 }
                 console.log("test script: ", test)
                 if(!test.includes(child.title))clean.push(MdChildCare)
