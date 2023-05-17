@@ -15,4 +15,4 @@ class DefaultWriteValue {
     }
 }
 
-module.exports = DefaultWriteValue
+export default DefaultWriteValue
