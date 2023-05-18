@@ -13,6 +13,7 @@ exports.generateToken = async(user) => {
 }
 
 exports.decodeToken = (req, res, next) => {
+    if(req.url.includes(('login'||'signup'))) return next()
     try {
         let decoded = jwt.verify(req.headers.token, secret)
         req.user = decoded
