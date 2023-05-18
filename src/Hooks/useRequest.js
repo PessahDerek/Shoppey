@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom"
 import useUser from "./useUser"
 
 
-let path = "http://localhost:5000/api/v1"
-// let path = "https://5179-102-166-66-156.ngrok-free.app/api/v1"
+// let path = "http://localhost:5000/api/v1"
+let path = "https://shoppey.onrender.com/api/v1"
 
 export default function useRequest(){
     const navigate = useNavigate()
