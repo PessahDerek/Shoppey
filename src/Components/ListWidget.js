@@ -25,7 +25,7 @@ const ListWidget = ({list}) => {
         <div className='details'>
             <h3>{list.title}</h3>
             <div className='p'>
-                {list.items.map(item => <p key={item.indx}>{item.item}</p>)}
+                {list.items.slice(0, 10).map(item => <p key={item.indx}>{item.item},</p>)}
             </div>
             
             <span className='btns'>

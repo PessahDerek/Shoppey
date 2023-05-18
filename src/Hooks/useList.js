@@ -10,6 +10,30 @@ const useList = () => {
     const alertCount = useRef(0)
     const allListsName = "shoppingLists"
 
+    const saveToLocalStorage = useCallback((list={}) => {
+        // alert("Saving offline...")
+        try {
+            let local_List = JSON.parse(localStorage.getItem(allListsName))
+            
+            // clean localList 
+            
+            let localList = cleanList(local_List)
+            // console.log('localList reduced: ', localList)
+            let hold = localList.filter(p => p.title === list.title)
+            if(hold.length > 0){
+                localList[localList.indexOf(hold[0])] = list
+            }else{
+                localList.push(list)
+            }
+            // remove repeating elements 
+    
+            
+            // console.log("saving this shit: ", clean)
+            // localStorage.setItem("shoppingLists", JSON.stringify(clean))
+        } catch (error) {
+            localStorage.setItem(allListsName, JSON.stringify(list))
+        }
+    }, [])
     
     const saveList = useCallback(async(list={}, silent=false) => {
         try {
@@ -27,7 +51,7 @@ const useList = () => {
         } catch (error) {
             saveToLocalStorage(list)
         }
-    }, [api_])
+    }, [api_, saveToLocalStorage])
 
     const getMyLists = useCallback(() => {
         return new Promise(async(resolve, reject) => {
@@ -36,7 +60,6 @@ const useList = () => {
                 resolve(res.data)
             })
             .catch((message, response ) => {
-                console.log('error fetching')
                 if(response){
                     alert(response.data.message)
                 }else{
@@ -56,25 +79,19 @@ const useList = () => {
 
 
     const synchronize = useCallback(async(silent=false) =>{
-        let localList = fetchFromLocalStorage()
-        // localStorage.removeItem(allListsName)
-        try {
-            if(token){ // only for logged in users
-                let onlineList = await getMyLists()
-                if(onlineList.lenth !== localList.length){
-                    localList = [...new Set(onlineList)]
-                }
-            }
-            // update localStorage
-            saveToLocalStorage(localList)
-            // save on database
-            // await saveList(localList, silent)
-            console.log("local is: ", localList)
-            setLists(p=>(localList))
-        } catch (error) {
-            console.log('error: ', error)
-            setLists(p=>(localList))
+        let localList = JSON.parse(localStorage.getItem(allListsName))
+
+        let onlineList = []
+        if(token){ // signed in user
+           onlineList = await getMyLists()
         }
+        for(let local of localList){
+            let found = onlineList.filter(list => list._id === local._id)
+            if(found.length < 1){
+                onlineList.push(local)
+            }
+        }
+        setLists(onlineList)
     }, [token, getMyLists])
         
 
@@ -83,7 +100,6 @@ const useList = () => {
 
     useEffect(()=>{
         async function sync(){
-            console.log('syncing...')
             await synchronize()
         }
         if(lists.length < 1) setTimeout(() => {
@@ -112,9 +128,9 @@ const useList = () => {
             if(clean.length > 0){
                 let test = ''
                 for(let x of clean){
-                    console.log("x is: ", x)
+                    // console.log("x is: ", x)
                 }
-                console.log("test script: ", test)
+                // console.log("test script: ", test)
                 if(!test.includes(child.title))clean.push(MdChildCare)
             }else{
                 clean.push(child)
@@ -124,40 +140,15 @@ const useList = () => {
         return Array.from(clean)
     }
 
-    const saveToLocalStorage = (list={}) => {
-        // alert("Saving offline...")
-        try {
-            let local_List = JSON.parse(localStorage.getItem(allListsName))
-            
-            // clean localList 
-            
-            let localList = cleanList(local_List)
-            console.log('localList reduced: ', localList)
-            let hold = localList.filter(p => p.title === list.title)
-            if(hold.length > 0){
-                localList[localList.indexOf(hold[0])] = list
-            }else{
-                localList.push(list)
-            }
-            // remove repeating elements 
-    
-            
-            // console.log("saving this shit: ", clean)
-            // localStorage.setItem("shoppingLists", JSON.stringify(clean))
-        } catch (error) {
-            localStorage.setItem(allListsName, JSON.stringify(list))
-        }
-    }
 
     function fetchFromLocalStorage(){
         let localList = []
         try { 
             localList = JSON.parse(localStorage.getItem(allListsName))
-            console.log("look what we have: ", localList[0])
         } catch (error) {
             localList = []
         }
-        console.log("local has: ", localList.length)
+        // console.log("local has: ", localList.length)
         if(localList === null ) return []
         return localList
     }

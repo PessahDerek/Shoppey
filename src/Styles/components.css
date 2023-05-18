@@ -5,18 +5,19 @@
     background-color: white;
 }
 .page .container {
-    min-height: calc(100vh - 3em);
+    min-height: calc(100vh - 4em);
 }
 
 .page-nav {
     width: 100%;
-    height: 3em;
-    line-height: 3em;
+    height: 4em;
+    line-height: 4em;
     display: flex;
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: white;
+    background-color: #713BDB;
+    color: white;
     justify-content: space-between;
     border-bottom: 1px solid rgb(141, 141, 141);
     cursor: default;
@@ -90,8 +91,13 @@
 }
 .list-widget .details {
     flex: 1;
+    display: grid;
+
 }
 .list-widget .details .p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
     text-overflow: ellipsis;
     box-sizing: content-box;
     -o-text-overflow: ellipsis;

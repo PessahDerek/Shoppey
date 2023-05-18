@@ -30,14 +30,14 @@ const AuthForm = () => {
             setSpin(false)
             navigate('/')
         })
-        .catch(({message, response})=>{{
+        .catch(({message, response})=>{
             if(response){
                 setSpin(false)
                 return alert(response.data.message)
             }
             setSpin(false)
             alert(message)
-        }})
+        })
     }
 
 

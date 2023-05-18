@@ -7,9 +7,6 @@ import '../Styles/pages.css'
 const AllListsPage = () => {
   const { lists } = useList()
 
-  useEffect(()=>{
-    console.log('shit: ', lists.length)
-  }, [lists])
   return (
     <Page title={"Lists"} id='all-lists-page'>
       {lists.length < 1 ? <h1>You have no pending list...</h1> : 
